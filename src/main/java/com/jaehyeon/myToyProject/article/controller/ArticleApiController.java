@@ -50,10 +50,10 @@ public class ArticleApiController {
     public ResponseEntity<Article> postArticle(@RequestBody AddArticleRequest request){
         //DTO -> Entity로 변경
         //toEntity() 사용하면 됨! id없는 article이 만들어지지만, JPA가 id알아서 다 넣어준다.(Audit을 통해 시간도!)
-        Article article = request.toEntity();
-        //Service 이용해서 Entity 저장
-        articleService.save(article);
-
+//        Article article = request.toEntity();
+//        //Service 이용해서 Entity 저장
+//        articleService.save(article);
+        Article article = articleService.save(request);
         //반환
         //반환 이렇게 해도 되나?
         return ResponseEntity.ok()
@@ -66,13 +66,14 @@ public class ArticleApiController {
         //DTO -> Entity로 변경
         //id로 찾은 Entity에 어떻게든 함
         //article에 update함수가 필요한 이유.
-        Article article=articleService.findById(id);
+//        Article article=articleService.findById(id);
 
         //update
-        article.update(request);
+//        article.update(request);
+        Article article = articleService.update(id, request);
 
         //저장 (꺼내온 id에 해당하는 article에 request의 정보를 덮어쓰고 다시 저장함)
-        articleService.save(article);
+//        articleService.save(article);
 
         //반환
         return ResponseEntity.ok()
@@ -83,11 +84,13 @@ public class ArticleApiController {
     //DELETE : /api/articles/{id}
     @DeleteMapping("/api/articles/{id}")
     public ResponseEntity<Void> deleteArticle(@PathVariable Long id){
-        //Service로 id에 해당하는 애 지움
-        Article article = articleService.findById(id);
 
-        //삭제
-        articleService.delete(article);
+        //Service로 id에 해당하는 애 지움
+//        Article article = articleService.findById(id);
+//
+//        //삭제
+//        articleService.delete(article);
+        articleService.delete(id);
 
         //반환
         return ResponseEntity.ok()

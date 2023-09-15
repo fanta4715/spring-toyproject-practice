@@ -1,6 +1,8 @@
 package com.jaehyeon.myToyProject.article.service;
 
 import com.jaehyeon.myToyProject.article.domain.Article;
+import com.jaehyeon.myToyProject.article.dto.AddArticleRequest;
+import com.jaehyeon.myToyProject.article.dto.UpdateArticleRequest;
 import com.jaehyeon.myToyProject.article.repository.ArticleRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -24,11 +26,23 @@ public class ArticleService {
         return articleRepository.findAll();
     }
 
-    public void save(Article article) {
+    public Article save(AddArticleRequest request) {
+        Article article = request.toEntity();
         articleRepository.save(article);
+        return article;
     }
 
-    public void delete(Article article) {
+    public void delete(Long id) {
+        Article article = articleRepository.findById(id)
+                .orElseThrow(()->new IllegalArgumentException("not found : "+ id));
         articleRepository.delete(article);
+    }
+
+    public Article update( Long id, UpdateArticleRequest request) {
+        Article article = articleRepository.findById(id)
+                .orElseThrow(()->new IllegalArgumentException("not found : "+ id));
+        article.update(request);
+        articleRepository.save(article);
+        return article;
     }
 }
