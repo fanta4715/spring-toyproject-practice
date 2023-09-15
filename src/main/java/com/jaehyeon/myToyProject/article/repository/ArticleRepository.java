@@ -1,6 +1,6 @@
 package com.jaehyeon.myToyProject.article.repository;
 
-import com.jaehyeon.myToyProject.article.entity.Article;
+import com.jaehyeon.myToyProject.article.domain.Article;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

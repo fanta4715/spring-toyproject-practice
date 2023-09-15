@@ -1,7 +1,7 @@
 package com.jaehyeon.myToyProject.article.controller;
 
 import com.jaehyeon.myToyProject.article.dto.ArticleViewResponse;
-import com.jaehyeon.myToyProject.article.entity.Article;
+import com.jaehyeon.myToyProject.article.domain.Article;
 import com.jaehyeon.myToyProject.article.service.ArticleService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;

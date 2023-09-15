@@ -1,6 +1,6 @@
 package com.jaehyeon.myToyProject.article.service;
 
-import com.jaehyeon.myToyProject.article.entity.Article;
+import com.jaehyeon.myToyProject.article.domain.Article;
 import com.jaehyeon.myToyProject.article.repository.ArticleRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

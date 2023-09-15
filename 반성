@@ -2,3 +2,5 @@
 2. RequestBody와 RequestParam
 3. DTO는 게시, 수정에 사용됨 -> toEntity는 게시에 필요.
 @CreatedDate, @LastModifiedDate
+4. Controller에서 여러 로직을 수행하지마라. Transactional하도록 Service에서 실행해야 함!
+5. Service어노테이션 그 자체에서 Transactioanl이 있는 것은 아니다.

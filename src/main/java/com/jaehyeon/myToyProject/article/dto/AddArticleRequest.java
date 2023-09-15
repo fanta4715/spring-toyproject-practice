@@ -1,6 +1,6 @@
 package com.jaehyeon.myToyProject.article.dto;
 
-import com.jaehyeon.myToyProject.article.entity.Article;
+import com.jaehyeon.myToyProject.article.domain.Article;
 import lombok.Builder;
 import lombok.Data;
 @Builder

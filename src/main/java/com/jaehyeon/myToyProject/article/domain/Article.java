@@ -1,4 +1,4 @@
-package com.jaehyeon.myToyProject.article.entity;
+package com.jaehyeon.myToyProject.article.domain;
 
 import com.jaehyeon.myToyProject.article.dto.UpdateArticleRequest;
 import jakarta.persistence.*;
@@ -11,7 +11,6 @@ import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 
 //아래 어노테이션 확인 해보시오
 @EntityListeners(AuditingEntityListener.class)
