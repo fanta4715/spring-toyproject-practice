@@ -1,6 +1,6 @@
 # spring-toyproject-practice
 
-##연습을 위한 Spring toy project
+## 연습을 위한 Spring toy project
 오로지 공부 점검을 위한 toy project
 1. 게시글
 2. 댓글
