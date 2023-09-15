@@ -1,5 +1,6 @@
 package com.jaehyeon.myToyProject.article.entity;
 
+import com.jaehyeon.myToyProject.article.dto.UpdateArticleRequest;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -40,5 +41,13 @@ public class Article {
     public Article(String title, String content) {
         this.title = title;
         this.content = content;
+    }
+
+    //수정을 하기 위해서는 DTO가 옴
+    //DTO를 넣어줘도 되고, DTO->ENtity를 넣어줘도 됨
+    //나는 DTO를 넣겠다.
+    public void update(UpdateArticleRequest request){
+        this.title=request.getTitle();
+        this.content=request.getContent();
     }
 }

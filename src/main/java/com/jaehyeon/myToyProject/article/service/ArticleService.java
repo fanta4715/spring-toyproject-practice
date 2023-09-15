@@ -23,4 +23,12 @@ public class ArticleService {
     public List<Article> findAll() {
         return articleRepository.findAll();
     }
+
+    public void save(Article article) {
+        articleRepository.save(article);
+    }
+
+    public void delete(Article article) {
+        articleRepository.delete(article);
+    }
 }
