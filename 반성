@@ -1,0 +1,4 @@
+1. ResponseEntity<>를 어떻게 쓸 것인지 생각해보기
+2. RequestBody와 RequestParam
+3. DTO는 게시, 수정에 사용됨 -> toEntity는 게시에 필요.
+@CreatedDate, @LastModifiedDate
