@@ -1,0 +1,10 @@
+data.sql이 안되는 일 발생
+>> entity에 annotation 덕지 덕지 붙여봄 -> 실패
+>>https://charactermail.tistory.com/353
+>> embedded로 설정하니까 됨. 조사해볼것
+
+시큐리티 의존성을 추가만 했는데도 로그인 창이 뜸
+>> 시큐리티 의존성 주석 처리 -> 실패
+>> 주석처리 후 gradle Reloat -> 성공
+
+왜 비어있는 리스트를 반환하지?? embedded도 아닌가?

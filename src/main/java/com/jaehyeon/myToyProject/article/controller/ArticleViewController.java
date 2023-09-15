@@ -1,11 +1,14 @@
 package com.jaehyeon.myToyProject.article.controller;
 
+import com.jaehyeon.myToyProject.article.dto.ArticleViewResponse;
+import com.jaehyeon.myToyProject.article.entity.Article;
 import com.jaehyeon.myToyProject.article.service.ArticleService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 //진정으로 화면만 관리하는 Controller
 @RequiredArgsConstructor
@@ -20,23 +23,42 @@ public class ArticleViewController {
     String index(Model model){
         //1. service 통해서, article 리스트를 가져옴
         //2. 모델에 추가
+        model.addAttribute("articles",articleService.findAll());
         //3. 리턴
-
         return "articleList";
+
+        //사실 List<Article>이나, List<DTO> 형식으로 보내나, ThymeLeaf에서는 받는 형식을 정해놓지않기에 상관이 없다.
+        //하지만 보내는 데 굳이 많은 정보가 필요하지 않으니 DTO로 보내는 것 뿐!
+        //추가적으로 DTO로 보내는 이유는 살펴보자
     }
 
     @GetMapping("/articles/{id}")
     String show(@PathVariable Long id, Model model){
         //1. service와 id 통해서 article하나 가져옴
+        Article target=articleService.findById(id);
+
         //2. 모델에 추가
+        model.addAttribute("article",target);
         //3. 리턴
         return "article";
 
     }
 
-    @GetMapping("/articles/new")
-    String newArticle(){
-        return "new-article";
+    //id가 들어오면 update를 위한 페이지
+    //id==null이면 post를 위한 페이지
+    @GetMapping("/new-article")
+    String newArticle(@RequestParam(required=false) Long id, Model model){
+
+        //viewResponse를 쓰는 이유는??
+        //Article로 넘겼어도 되긴 함. (빈 생성자 사용이 지금 막혀있지만)
+        if (id==null){
+            model.addAttribute("article", new ArticleViewResponse());
+        }
+        else{
+            Article article=articleService.findById(id);
+            model.addAttribute("article",new ArticleViewResponse(article));
+        }
+        return "newArticle";
     }
 
 }

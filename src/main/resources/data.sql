@@ -1,0 +1,3 @@
+-- INSERT INTO article (title, content, created_at, updated_at) VALUES ('임시로 넣은 제목1', '임시로 넣은 내용1', NOW(), NOW())
+-- INSERT INTO article (title, content, created_at, updated_at) VALUES ('임시로 넣은 제목2', '임시로 넣은 내용2', NOW(), NOW())
+-- INSERT INTO article (title, content, created_at, updated_at) VALUES ('임시로 넣은 제목3', '임시로 넣은 내용3', NOW(), NOW())
