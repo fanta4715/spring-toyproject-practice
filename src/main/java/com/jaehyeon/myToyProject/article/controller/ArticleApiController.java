@@ -19,10 +19,12 @@ public class ArticleApiController {
 
     //article list반환
     //GET : /api/articles
+    //완료
     @GetMapping("/api/articles")
     public ResponseEntity<List<Article>> findAllArticles(){
         //Service통해서 articles list 받음
         List<Article> articles=articleService.findAll();
+
         //반환
         return ResponseEntity.ok()
                 .body(articles);
@@ -30,12 +32,13 @@ public class ArticleApiController {
 
     //article 하나 반환
     //GET : /api/articles/{id}
+    //완료
     @GetMapping("/api/articles/{id}")
     public ResponseEntity<Article> findArticle(@PathVariable Long id){
         //Service통해서 article 하나 받아옴
         Article article = articleService.findById(id);
-        //반환
 
+        //반환
         //ResponseEntity공부하기?
         return ResponseEntity.ok()
                 .body(article);
@@ -49,6 +52,8 @@ public class ArticleApiController {
 
         //Service 이용해서 Entity 저장
         //반환
+        return ResponseEntity.ok()
+                .build();
     }
     //article 수정
     //PUT PATCH : /api/articles/{id}
@@ -57,6 +62,8 @@ public class ArticleApiController {
         //DTO -> Entity로 변경
         //id로 찾은 Entity에 어떻게든 함
         //반환
+        return ResponseEntity.ok()
+                .build();
     }
 
     //article 삭제
@@ -65,6 +72,8 @@ public class ArticleApiController {
     public ResponseEntity<Void> deleteArticle(@PathVariable Long id){
         //Service로 id에 해당하는 애 지움
         //반환
+        return ResponseEntity.ok()
+                .build();
     }
 
 }
