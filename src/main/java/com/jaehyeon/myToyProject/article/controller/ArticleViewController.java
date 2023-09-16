@@ -3,14 +3,20 @@ package com.jaehyeon.myToyProject.article.controller;
 import com.jaehyeon.myToyProject.article.dto.ArticleViewResponse;
 import com.jaehyeon.myToyProject.article.domain.Article;
 import com.jaehyeon.myToyProject.article.service.ArticleService;
+import com.jaehyeon.myToyProject.comment.domain.Comment;
+import com.jaehyeon.myToyProject.comment.service.CommentService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.List;
+
 //진정으로 화면만 관리하는 Controller
+@Slf4j
 @RequiredArgsConstructor
 @Controller
 public class ArticleViewController {
@@ -18,12 +24,15 @@ public class ArticleViewController {
     //2. 게시글 하나 보기
     private final ArticleService articleService;
 
+    private final CommentService commentService;
+
     //private를 붙여야 하나?
     @GetMapping("/articles")
     String index(Model model){
         //1. service 통해서, article 리스트를 가져옴
         //2. 모델에 추가
         model.addAttribute("articles",articleService.findAll());
+
         //3. 리턴
         return "articleList";
 
@@ -36,9 +45,13 @@ public class ArticleViewController {
     String show(@PathVariable Long id, Model model){
         //1. service와 id 통해서 article하나 가져옴
         Article target=articleService.findById(id);
-
+        List<Comment> comments=commentService.findByArticleId(id);
         //2. 모델에 추가
         model.addAttribute("article",target);
+        model.addAttribute("comments",comments);
+
+        //로그 한 번 확인해보자
+        log.info("dd"+comments);
         //3. 리턴
         return "article";
 

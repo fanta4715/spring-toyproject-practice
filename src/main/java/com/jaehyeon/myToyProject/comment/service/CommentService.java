@@ -7,6 +7,9 @@ import com.jaehyeon.myToyProject.comment.repository.CommentRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+
 @RequiredArgsConstructor
 @Service
 public class CommentService {
@@ -37,5 +40,13 @@ public class CommentService {
         //Entity -> Repository
         commentRepository.save(comment);
         return comment;
+    }
+
+    public List<Comment> findAll() {
+        return commentRepository.findAll();
+    }
+
+    public List<Comment> findByArticleId(Long articleId){
+        return commentRepository.findByArticleId(articleId);
     }
 }
