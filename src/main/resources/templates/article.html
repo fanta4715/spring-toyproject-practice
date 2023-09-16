@@ -32,7 +32,9 @@
       </div>
     </div>
     <div class ="col-lg-8" th:each = "item : ${comments}">
-      <p class="fs-5 mb-4" th:text="${item.content}">dd</p>
+      <p class="text-muted fst-italic mb-2" th:text="${item.content}"></p>
+      <p class="text-muted fst-italic mb-2" th:text="|Posted on ${#temporals.format(item.createdAt, 'yyyy-MM-dd HH:mm')} |"></p>
+      <p>-----</p>
     </div>
   </div>
 

@@ -16,3 +16,7 @@ data.sql이 안되는 일 발생
 
 Repository에서 특정 col값을 활용해서 값을 얻어오려면 어떻ㅎ게 해야 하지?
 >> Jpa Repository를 extends했다면, 그저 함수 선언만 이름에 맞게 해주면 함수생성해줌.
+
+save처럼, DB를 건드리는 경우에 실패할 경우, 겹쳐서 혼동이 생기는 경우를 대비해야함. 따라서 @Transaction이라는 어노테이션 사용해야 함
+
+@JoinToColumn 같은 경우에, FK가 Long이라고 해도, 그 객체를 담을 수 있는 Entity로 만들고 담아주어야함!
