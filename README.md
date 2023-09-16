@@ -7,7 +7,7 @@
   - ~~View + Template 구현~~
 #### 2. 댓글
   - ~~CRUD 구현~~
-  -  View + Template 구현 (ing)
+  -  View + Template 구현 (ing) -> Thymeleaf나 JS흐름 공부를 해야 할 듯..
 #### 3. 사용자 & 로그인
 #### 4. 사진 삽입
 #### 5. 배포
