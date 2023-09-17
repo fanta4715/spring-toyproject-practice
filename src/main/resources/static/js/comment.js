@@ -1,71 +1,33 @@
-// 삭제 기능
-const deleteButton = document.getElementById('delete-btn');
+//button 에 설정해놓은 id를 통해서 버튼을 받아온다.
+const commentCreateButton = document.getElementById('comment-create-btn');
 
-if (deleteButton) {
-    deleteButton.addEventListener('click', event => {
-        let id = document.getElementById('article-id').value;
-        function success() {
-            alert('삭제가 완료되었습니다.');
-            location.replace('/articles');
-        }
 
-        function fail() {
-            alert('삭제 실패했습니다.');
-            location.replace('/articles');
-        }
-
-        httpRequest('DELETE',`/api/articles/${id}`, null, success, fail);
-    });
-}
-
-// 수정 기능
-const modifyButton = document.getElementById('modify-btn');
-
-if (modifyButton) {
-    modifyButton.addEventListener('click', event => {
-        let params = new URLSearchParams(location.search);
-        let id = params.get('id');
-
-        body = JSON.stringify({
-            title: document.getElementById('title').value,
-            content: document.getElementById('content').value
-        })
-
-        function success() {
-            alert('수정 완료되었습니다.');
-            location.replace(`/articles/${id}`);
-        }
-
-        function fail() {
-            alert('수정 실패했습니다.');
-            location.replace(`/articles/${id}`);
-        }
-
-        httpRequest('PUT',`/api/articles/${id}`, body, success, fail);
-    });
-}
-
-// 생성 기능
-//button은 html의 버튼에 설정한 id를 통해서 얻어온다.
-const createButton = document.getElementById('create-btn');
-
-if (createButton) {
+if (commentCreateButton) {
     // 등록 버튼을 클릭하면 /api/articles로 요청을 보낸다
-    createButton.addEventListener('click', event => {
+    commentCreateButton.addEventListener('click', event => {
+        // let params = new URLSearchParams(location.search);
+        // let id = params.get('id');
+        //여기에 null이 들어가는 경우 발생 -> location이라는 thymeleaf사용
+        let articleId = document.getElementById('new-comment-article-id').value;
+
+
+
         body = JSON.stringify({
-            title: document.getElementById('title').value,
+            //우리는 body에 content만 넣고
+            //api/article/{articleId}/comment로 post mapping하면 된다.
+            //input or textarea라는 태그의 id에 해당하는 값을 가져온다.
             content: document.getElementById('content').value
         });
         function success() {
-            alert('등록 완료되었습니다.');
-            location.replace('/articles');
+            alert('댓글 등록 완료되었습니다.');
+            location.replace(`/articles/${articleId}`);
         };
         function fail() {
-            alert('등록 실패했습니다.');
-            location.replace('/articles');
+            alert('댓글 등록 실패했습니다.');
+            location.replace(`/articles/${articleId}`);
         };
 
-        httpRequest('POST','/api/articles', body, success, fail)
+        httpRequest('POST',`/api/article/${articleId}/comment`, body, success, fail)
     });
 }
 

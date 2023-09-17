@@ -5,3 +5,13 @@
 4. Controller에서 여러 로직을 수행하지마라. Transactional하도록 Service에서 실행해야 함!
 5. Service어노테이션 그 자체에서 Transactioanl이 있는 것은 아니다.
 
+ @CreatedDate
+    @Column(name="created_at")
+    LocalDateTime createdAt;
+
+    @LastModifiedDate
+    @Column(name="updated_at")
+    LocalDateTime modifiedAt;
+
+    >>이 친구들은 not nullable로 선언하면 안 됨.
+    >> entity클래스에 not nullable한 변수는, 무조건 사용자에게서 받아내야 하는 변수임을 의미함!!
