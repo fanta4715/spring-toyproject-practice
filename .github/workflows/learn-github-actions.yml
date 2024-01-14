@@ -1,11 +1,11 @@
 name: learn-github-actions #Actions탭에 표시되는 workflow이름 (optional)
-run-name: ${{ github.actor }} is learning GitHub Actions
+run-name: ${{ github.actor }} is learning GitHub Actions #Actions탭 리스트에 표시되는 이름
 on: [push] #트리거 지정 
 jobs: #workflow의 job을 묶는거
   check-bats-version: #job 이름
     runs-on: ubuntu-latest #job실행 runner
     steps: #job의 실행 순서
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4 #actions의 checkout v4 실행
       - uses: actions/setup-node@v3
         with:
           node-version: '14'
