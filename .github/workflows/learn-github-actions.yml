@@ -6,8 +6,9 @@ jobs: #workflow의 job을 묶는거
     runs-on: ubuntu-latest #job실행 runner
     steps: #job의 실행 순서
       - uses: actions/checkout@v4 #actions의 checkout v4 실행
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v3 #uses와 run의 차이점이 뭥임?
         with:
           node-version: '14'
+      - uses: actions/cache@v3.3.3
       - run: npm install -g bats
       - run: bats -v
