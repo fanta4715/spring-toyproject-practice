@@ -12,3 +12,4 @@ jobs: #workflow의 job을 묶는거
       - uses: actions/cache@v3.3.3
       - run: npm install -g bats
       - run: bats -v
+#{owner}/{repo}@{ref|version} 형태 중요
